@@ -4,9 +4,9 @@ const CONFIG = {
     name: "Josan George",
     image: "/chillguy.png", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
     role: "Penetration Tester & Cybersecurity Enthusiast",
-    bio: "How do I take off a mask when it stops being a mask, when it's as much a part of me as I am?",
+    bio: "You good bro?",
     email: "josangeorge27@gmail.com",
-    linkedin: "josangeorge",
+    linkedin: "josan-george-a86370227",
     github: "josangeorge",
     instagram: "",
   },
