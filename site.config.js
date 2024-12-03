@@ -9,7 +9,7 @@ const CONFIG = {
     linkedin: "josan-george-a86370227",
     github: "josangeorge",
     portfolio: "https://josangeorge.github.io/Portfolio/",
-    instagram: "https://www.instagram.com/josan.george/",
+    instagram: "josan.george/",
     youtube: "https://www.youtube.com/@Wh4tTh3H4ck",
     medium: "https://medium.com/@josangeorge27",
     hackthebox: "https://app.hackthebox.com/profile/798539",
