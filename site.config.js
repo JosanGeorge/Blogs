@@ -8,7 +8,12 @@ const CONFIG = {
     email: "josangeorge27@gmail.com",
     linkedin: "josan-george-a86370227",
     github: "josangeorge",
-    instagram: "",
+    instagram: "https://www.instagram.com/josan.george/",
+    youtube: "https://www.youtube.com/@Wh4tTh3H4ck",
+    medium: "https://medium.com/@josangeorge27",
+    hackthebox: "https://app.hackthebox.com/profile/798539",
+    tryhackme: "https://tryhackme.com/r/p/MRxROBOT",
+    discord: "https://discord.gg/6p3ZmHHZm9",
   },
   projects: [
     {
