@@ -18,8 +18,8 @@ const CONFIG = {
   },
   projects: [
     {
-      name: `Medium Blog`,
-      href: "https://medium.com/@josangeorge27",
+      name: `Portfolio`,
+      href: "https://josangeorge.github.io/Portfolio/",
     },
   ],
   // blog setting (required)
