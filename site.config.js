@@ -4,7 +4,7 @@ const CONFIG = {
     name: "Josan George",
     image: "/mr_robot.svg", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
     role: "Penetration Tester & Cybersecurity Enthusiast",
-    bio: "I develop everything using node.",
+    bio: "How do I take off a mask when it stops being a mask, when it's as much a part of me as I am?",
     email: "josangeorge27@gmail.com",
     linkedin: "josangoerge",
     github: "josangeorge",
@@ -12,8 +12,8 @@ const CONFIG = {
   },
   projects: [
     {
-      name: `morethan-log`,
-      href: "https://github.com/morethanmin/morethan-log",
+      name: `Medium Blog`,
+      href: "https://medium.com/@josangeorge27",
     },
   ],
   // blog setting (required)
