@@ -16,12 +16,7 @@ const CONFIG = {
     tryhackme: "https://tryhackme.com/r/p/MRxROBOT",
     discord: "https://discord.gg/6p3ZmHHZm9",
   },
-  projects: [
-    {
-      name: `Portfolio`,
-      href: "https://josangeorge.github.io/Portfolio/",
-    },
-  ],
+  projects: [],
   // blog setting (required)
   blog: {
     title: "Josan George - Writeups",

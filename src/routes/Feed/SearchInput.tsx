@@ -1,21 +1,21 @@
 import styled from "@emotion/styled"
-import React, { InputHTMLAttributes, ReactNode } from "react"
-import { Emoji } from "src/components/Emoji"
+import React, { InputHTMLAttributes } from "react"
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {}
 
 const SearchInput: React.FC<Props> = ({ ...props }) => {
   return (
     <StyledWrapper>
-      <div className="top">
-        <Emoji>🔎</Emoji> Search
+      <div className="input-wrap">
+        <span className="prompt">$</span>
+        <input
+          type="text"
+          placeholder="search posts..."
+          autoComplete="off"
+          spellCheck={false}
+          {...props}
+        />
       </div>
-      <input
-        className="mid"
-        type="text"
-        placeholder="Search Keyword..."
-        {...props}
-      />
     </StyledWrapper>
   )
 }
@@ -23,23 +23,50 @@ const SearchInput: React.FC<Props> = ({ ...props }) => {
 export default SearchInput
 
 const StyledWrapper = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 
   @media (min-width: 768px) {
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
   }
-  > .top {
-    padding: 0.25rem;
-    margin-bottom: 0.75rem;
-  }
-  > .mid {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-    border-radius: 1rem;
-    outline-style: none;
-    width: 100%;
-    background-color: ${({ theme }) => theme.colors.gray4};
+
+  > .input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius-card);
+    border: 1px solid ${({ theme }) => theme.colors.gray6};
+    background-color: ${({ theme }) => theme.colors.gray3};
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+
+    &:focus-within {
+      border-color: ${({ theme }) =>
+        theme.scheme === "dark" ? "var(--accent-border)" : theme.colors.gray8};
+      box-shadow: ${({ theme }) =>
+        theme.scheme === "dark" ? "0 0 0 3px rgba(0, 229, 160, 0.08)" : "none"};
+    }
+
+    .prompt {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: ${({ theme }) =>
+        theme.scheme === "dark" ? "var(--accent)" : theme.colors.gray8};
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    input {
+      all: unset;
+      flex: 1;
+      font-size: 0.875rem;
+      color: ${({ theme }) => theme.colors.gray12};
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      letter-spacing: 0.02em;
+
+      &::placeholder {
+        color: ${({ theme }) => theme.colors.gray8};
+      }
+    }
   }
 `

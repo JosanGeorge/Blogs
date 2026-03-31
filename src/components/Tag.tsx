@@ -12,9 +12,10 @@ const Tag: React.FC<Props> = ({ children }) => {
   const handleClick = (value: string) => {
     router.push(`/?tag=${value}`)
   }
+
   return (
     <StyledWrapper onClick={() => handleClick(children)}>
-      {children}
+      <span className="hash">#</span>{children}
     </StyledWrapper>
   )
 }
@@ -22,15 +23,33 @@ const Tag: React.FC<Props> = ({ children }) => {
 export default Tag
 
 const StyledWrapper = styled.div`
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  border-radius: 50px;
-  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
   line-height: 1rem;
-  font-weight: 400;
+  font-weight: 500;
+  font-family: 'SF Mono', 'Fira Code', monospace;
   color: ${({ theme }) => theme.colors.gray10};
   background-color: ${({ theme }) => theme.colors.gray5};
+  border: 1px solid ${({ theme }) => theme.colors.gray6};
   cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+
+  .hash {
+    color: ${({ theme }) =>
+      theme.scheme === "dark" ? "var(--accent)" : theme.colors.gray8};
+    font-weight: 600;
+  }
+
+  &:hover {
+    color: ${({ theme }) =>
+      theme.scheme === "dark" ? "var(--accent)" : theme.colors.gray12};
+    background-color: ${({ theme }) =>
+      theme.scheme === "dark" ? "var(--accent-dim)" : theme.colors.gray4};
+    border-color: ${({ theme }) =>
+      theme.scheme === "dark" ? "var(--accent-border)" : theme.colors.gray7};
+  }
 `

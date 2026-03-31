@@ -67,62 +67,81 @@ const PostHeader: React.FC<Props> = ({ data }) => {
 export default PostHeader
 
 const StyledWrapper = styled.div`
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray6};
+
   .title {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
+    font-size: 1.75rem;
+    line-height: 2.4rem;
     font-weight: 700;
+    color: ${({ theme }) => theme.colors.gray12};
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+
+    @media (min-width: 768px) {
+      font-size: 2rem;
+      line-height: 2.75rem;
+    }
   }
+
   nav {
-    margin-top: 1.5rem;
-    color: ${({ theme }) => theme.colors.gray11};
+    color: ${({ theme }) => theme.colors.gray10};
+
     > .top {
       display: flex;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       gap: 0.75rem;
       align-items: center;
+
       .author {
         display: flex;
         gap: 0.5rem;
         align-items: center;
+        font-size: 0.875rem;
       }
+
       .hr {
-        margin-top: 0.25rem;
-        margin-bottom: 0.25rem;
         align-self: stretch;
         width: 1px;
-        background-color: ${({ theme }) => theme.colors.gray10};
+        background-color: ${({ theme }) => theme.colors.gray6};
       }
-      .date {
-        margin-right: 0.5rem;
 
-        @media (min-width: 768px) {
-          margin-left: 0;
-        }
+      .date {
+        font-size: 0.8rem;
+        font-family: 'SF Mono', 'Fira Code', monospace;
+        color: ${({ theme }) =>
+          theme.scheme === "dark" ? "var(--accent)" : theme.colors.gray9};
+        letter-spacing: 0.02em;
       }
     }
+
     > .mid {
       display: flex;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       align-items: center;
+
       .tags {
         display: flex;
         overflow-x: auto;
-        flex-wrap: nowrap;
-        gap: 0.5rem;
+        flex-wrap: wrap;
+        gap: 0.4rem;
         max-width: 100%;
       }
     }
+
     .thumbnail {
       overflow: hidden;
       position: relative;
-      margin-bottom: 1.75rem;
-      border-radius: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: var(--radius-card);
       width: 100%;
-      background-color: ${({ theme }) => theme.colors.gray4};
-      padding-bottom: 66%;
+      background-color: ${({ theme }) => theme.colors.gray3};
+      padding-bottom: 52%;
+      border: 1px solid ${({ theme }) => theme.colors.gray6};
 
       @media (min-width: 1024px) {
-        padding-bottom: 50%;
+        padding-bottom: 44%;
       }
     }
   }

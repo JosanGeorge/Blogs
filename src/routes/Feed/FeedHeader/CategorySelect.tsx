@@ -49,38 +49,55 @@ export default CategorySelect
 
 const StyledWrapper = styled.div`
   position: relative;
+
   > .wrapper {
     display: flex;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    gap: 0.25rem;
+    padding: 0.4rem 0;
+    gap: 0.3rem;
     align-items: center;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
     font-weight: 700;
+    color: ${({ theme }) => theme.colors.gray12};
     cursor: pointer;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: ${({ theme }) =>
+        theme.scheme === "dark" ? "var(--accent)" : theme.colors.gray9};
+    }
+
+    svg {
+      font-size: 1.1rem;
+      color: ${({ theme }) => theme.colors.gray9};
+    }
   }
+
   > .content {
     position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
     z-index: 40;
-    padding: 0.25rem;
-    border-radius: 0.75rem;
-    background-color: ${({ theme }) => theme.colors.gray2};
-    color: ${({ theme }) => theme.colors.gray10};
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 0.35rem;
+    border-radius: var(--radius-card);
+    background-color: ${({ theme }) => theme.colors.gray3};
+    border: 1px solid ${({ theme }) => theme.colors.gray6};
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    min-width: 160px;
+
     > .item {
-      padding: 0.25rem;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      border-radius: 0.75rem;
-      font-size: 0.875rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.825rem;
       line-height: 1.25rem;
       white-space: nowrap;
       cursor: pointer;
+      color: ${({ theme }) => theme.colors.gray10};
+      transition: color 0.12s ease, background-color 0.12s ease;
 
-      :hover {
-        background-color: ${({ theme }) => theme.colors.gray4};
+      &:hover {
+        color: ${({ theme }) => theme.colors.gray12};
+        background-color: ${({ theme }) => theme.colors.gray5};
       }
     }
   }

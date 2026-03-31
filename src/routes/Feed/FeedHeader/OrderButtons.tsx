@@ -41,17 +41,30 @@ export default OrderButtons
 
 const StyledWrapper = styled.div`
   display: flex;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  gap: 0.25rem;
+  align-items: center;
+
   a {
     cursor: pointer;
-    color: ${({ theme }) => theme.colors.gray10};
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    color: ${({ theme }) => theme.colors.gray9};
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    transition: color 0.15s ease, background-color 0.15s ease;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.gray12};
+      background-color: ${({ theme }) => theme.colors.gray5};
+    }
 
     &[data-active="true"] {
       font-weight: 700;
-
-      color: ${({ theme }) => theme.colors.gray12};
+      color: ${({ theme }) =>
+        theme.scheme === "dark" ? "var(--accent)" : theme.colors.gray12};
+      background-color: ${({ theme }) =>
+        theme.scheme === "dark" ? "var(--accent-dim)" : theme.colors.gray4};
     }
   }
 `

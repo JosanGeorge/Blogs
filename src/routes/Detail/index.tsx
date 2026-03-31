@@ -11,6 +11,7 @@ const Detail: React.FC<Props> = () => {
   useMermaidEffect()
 
   if (!data) return null
+
   return (
     <StyledWrapper data-type={data.type}>
       {data.type[0] === "Page" && <PageDetail />}
@@ -22,6 +23,7 @@ const Detail: React.FC<Props> = () => {
 export default Detail
 
 const StyledWrapper = styled.div`
+  position: relative;
   padding: 2rem 0;
 
   &[data-type="Paper"] {

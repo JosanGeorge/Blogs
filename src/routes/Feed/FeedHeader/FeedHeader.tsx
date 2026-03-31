@@ -19,7 +19,8 @@ export default FeedHeader
 
 const StyledWrapper = styled.div`
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray6};

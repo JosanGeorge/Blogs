@@ -18,7 +18,9 @@ const Footer: React.FC<Props> = ({ className }) => {
         target="_blank"
         rel="noreferrer"
       >
-        © {CONFIG.profile.name} {from === y || !from ? y : `${from} - ${y}`}
+        <span className="copy">©</span>
+        <span className="name">{CONFIG.profile.name}</span>
+        <span className="year">{from === y || !from ? y : `${from} – ${y}`}</span>
       </a>
     </StyledWrapper>
   )
@@ -27,10 +29,30 @@ const Footer: React.FC<Props> = ({ className }) => {
 export default Footer
 
 const StyledWrapper = styled.div`
+  padding-top: 1.5rem;
+
   a {
-    margin-top: 0.75rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    color: ${({ theme }) => theme.colors.gray10};
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: ${({ theme }) => theme.colors.gray8};
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: ${({ theme }) =>
+        theme.scheme === "dark" ? "var(--accent)" : theme.colors.gray10};
+    }
+
+    .copy {
+      color: ${({ theme }) => theme.colors.gray7};
+    }
+    .name {
+      font-weight: 500;
+    }
+    .year {
+      color: ${({ theme }) => theme.colors.gray7};
+    }
   }
 `

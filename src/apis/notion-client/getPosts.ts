@@ -10,18 +10,28 @@ import { TPosts } from "src/types"
  * @param {{ includePages: boolean }} - false: posts only / true: include pages
  */
 
-// TODO: react query를 사용해서 처음 불러온 뒤로는 해당데이터만 사용하도록 수정
+// Module-level cache — avoids re-fetching the entire Notion database on every
+// request during development (ISR revalidation handles freshness in production).
+let _cachedPosts: TPosts | null = null
+let _cacheTime = 0
+const CACHE_TTL_MS = 60 * 1000 // 60 seconds
+
 export const getPosts = async () => {
+  const now = Date.now()
+  if (_cachedPosts && now - _cacheTime < CACHE_TTL_MS) {
+    return _cachedPosts
+  }
   let id = CONFIG.notionConfig.pageId as string
   const api = new NotionAPI()
 
   const response = await api.getPage(id)
   id = idToUuid(id)
-  const collection = Object.values(response.collection)[0]?.value
+  // The Notion API returns an extra nesting layer: block[id].value.value is the actual block
+  const collection = Object.values(response.collection)[0]?.value?.value
   const block = response.block
   const schema = collection?.schema
 
-  const rawMetadata = block[id].value
+  const rawMetadata = (block[id] as any)?.value?.value
 
   // Check Type
   if (
@@ -38,10 +48,10 @@ export const getPosts = async () => {
       const properties = (await getPageProperties(id, block, schema)) || null
       // Add fullwidth, createdtime to properties
       properties.createdTime = new Date(
-        block[id].value?.created_time
+        (block[id] as any)?.value?.value?.created_time
       ).toString()
       properties.fullWidth =
-        (block[id].value?.format as any)?.page_full_width ?? false
+        ((block[id] as any)?.value?.value?.format as any)?.page_full_width ?? false
 
       data.push(properties)
     }
@@ -54,6 +64,8 @@ export const getPosts = async () => {
     })
 
     const posts = data as TPosts
+    _cachedPosts = posts
+    _cacheTime = Date.now()
     return posts
   }
 }

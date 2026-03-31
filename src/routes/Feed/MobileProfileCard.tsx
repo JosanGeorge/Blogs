@@ -10,21 +10,20 @@ type Props = {
 const MobileProfileCard: React.FC<Props> = () => {
   return (
     <StyledWrapper>
-      <div className="top">💻 Profile</div>
-      <div className="mid">
-        <div className="wrapper">
+      <div className="card">
+        <div className="avatar-wrap">
           <Image
             src={CONFIG.profile.image}
-            width={90}
-            height={90}
-            css={{ position: "relative" }}
+            width={64}
+            height={64}
+            css={{ borderRadius: "50%", objectFit: "cover" }}
             alt="profile_image"
           />
-          <div className="wrapper">
-            <div className="top">{CONFIG.profile.name}</div>
-            <div className="mid">{CONFIG.profile.role}</div>
-            <div className="btm">{CONFIG.profile.bio}</div>
-          </div>
+        </div>
+        <div className="info">
+          <div className="name">{CONFIG.profile.name}</div>
+          <div className="role">{CONFIG.profile.role}</div>
+          <div className="bio">{CONFIG.profile.bio}</div>
         </div>
       </div>
     </StyledWrapper>
@@ -35,43 +34,56 @@ export default MobileProfileCard
 
 const StyledWrapper = styled.div`
   display: block;
+  margin-bottom: 1.25rem;
 
   @media (min-width: 1024px) {
     display: none;
   }
 
-  > .top {
-    padding: 0.25rem;
-    margin-bottom: 0.75rem;
-  }
-  > .mid {
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border-radius: 1rem;
+  > .card {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-card);
+    border: 1px solid ${({ theme }) => theme.colors.gray6};
     background-color: ${({ theme }) =>
-      theme.scheme === "light" ? "white" : theme.colors.gray4};
-    > .wrapper {
+      theme.scheme === "light" ? "#ffffff" : theme.colors.gray4};
+
+    .avatar-wrap {
+      flex-shrink: 0;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: ${({ theme }) =>
+        theme.scheme === "dark"
+          ? "0 0 0 2px var(--accent)"
+          : "0 0 0 2px rgba(0,0,0,0.1)"};
+    }
+
+    .info {
       display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      > .wrapper {
-        height: fit-content;
-        > .top {
-          font-size: 1.25rem;
-          line-height: 1.75rem;
-          font-style: italic;
-          font-weight: 700;
-        }
-        > .mid {
-          margin-bottom: 0.5rem;
-          font-size: 0.875rem;
-          line-height: 1.25rem;
-          color: ${({ theme }) => theme.colors.gray11};
-        }
-        > .btm {
-          font-size: 0.875rem;
-          line-height: 1.25rem;
-        }
+      flex-direction: column;
+      gap: 0.2rem;
+
+      .name {
+        font-size: 1rem;
+        font-weight: 700;
+        color: ${({ theme }) => theme.colors.gray12};
+      }
+
+      .role {
+        font-size: 0.72rem;
+        color: ${({ theme }) =>
+          theme.scheme === "dark" ? "var(--accent)" : theme.colors.gray9};
+        font-family: 'SF Mono', 'Fira Code', monospace;
+      }
+
+      .bio {
+        font-size: 0.8rem;
+        color: ${({ theme }) => theme.colors.gray10};
+        line-height: 1.4;
       }
     }
   }
