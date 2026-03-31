@@ -27,7 +27,7 @@ export const getPosts = async () => {
   const response = await api.getPage(id)
   id = idToUuid(id)
   // The Notion API returns an extra nesting layer: block[id].value.value is the actual block
-  const collection = Object.values(response.collection)[0]?.value?.value
+  const collection = (Object.values(response.collection)[0] as any)?.value?.value
   const block = response.block
   const schema = collection?.schema
 
