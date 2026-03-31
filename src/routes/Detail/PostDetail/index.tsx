@@ -5,7 +5,7 @@ import CommentBox from "./CommentBox"
 import Category from "src/components/Category"
 import styled from "@emotion/styled"
 import NotionRenderer from "../components/NotionRenderer"
-import TableOfContents from "../components/TableOfContents"
+import TableOfContents, { TocHeading } from "../components/TableOfContents"
 import usePostQuery from "src/hooks/usePostQuery"
 import { getPageTableOfContents } from "notion-utils"
 
@@ -22,7 +22,7 @@ const PostDetail: React.FC<Props> = () => {
     const pageBlock = data.recordMap.block[firstId]?.value
     if (!pageBlock) return []
     try {
-      return getPageTableOfContents(pageBlock, data.recordMap)
+      return getPageTableOfContents(pageBlock as any, data.recordMap) as TocHeading[]
     } catch {
       return []
     }
