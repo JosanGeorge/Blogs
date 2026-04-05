@@ -25,6 +25,9 @@ export const getPosts = async () => {
   const api = new NotionAPI()
 
   const response = await api.getPage(id)
+  // Guard: if NOTION_PAGE_ID is missing/wrong the API returns an empty response
+  if (!response?.collection || !response?.collection_query) return []
+
   id = idToUuid(id)
   // The Notion API returns an extra nesting layer: block[id].value.value is the actual block
   const collection = (Object.values(response.collection)[0] as any)?.value?.value
