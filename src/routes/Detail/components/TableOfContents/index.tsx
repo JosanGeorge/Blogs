@@ -97,7 +97,7 @@ const StyledWrapper = styled.div`
     position: fixed;
     top: 5.5rem;
     left: 1.5rem;
-    width: 10rem;
+    width: 18rem;
     max-height: calc(100vh - 7rem);
     overflow-y: auto;
     scrollbar-width: none;
@@ -109,20 +109,20 @@ const StyledWrapper = styled.div`
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid rgba(255, 255, 255, 0.07);
     border-radius: 0.75rem;
-    padding: 0.85rem 0.35rem;
+    padding: 1.1rem 0.65rem;
     box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.05);
   }
 
   .toc-label {
     font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.62rem;
+    font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: ${({ theme }) =>
       theme.scheme === "dark" ? "var(--accent)" : theme.colors.gray9};
-    margin-bottom: 0.75rem;
-    padding-left: 0.6rem;
+    margin-bottom: 0.85rem;
+    padding-left: 0.65rem;
 
     .toc-prefix {
       opacity: 0.65;
@@ -163,8 +163,8 @@ const StyledWrapper = styled.div`
     }
 
     .toc-text {
-      font-size: 0.72rem;
-      line-height: 1.45;
+      font-size: 0.92rem;
+      line-height: 1.55;
       font-family: 'SF Mono', 'Fira Code', monospace;
       word-break: break-word;
     }
