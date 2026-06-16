@@ -7,7 +7,7 @@ import {
   AiOutlineMail,
   AiOutlineYoutube,
 } from "react-icons/ai"
-import { SiHackthebox, SiTryhackme, SiMedium, SiDiscord } from "react-icons/si"
+import { SiHackthebox, SiTryhackme, SiMedium, SiDiscord, SiHackerone, SiBugcrowd } from "react-icons/si"
 import { CONFIG } from "site.config"
 
 type Link = { href: string; label: string; icon: React.ReactNode }
@@ -58,6 +58,17 @@ const ContactCard: React.FC = () => {
       href: CONFIG.profile.discord,
       label: "Discord",
       icon: <SiDiscord />,
+    },
+    // Bug bounty platforms – hidden until URLs are set in site.config.js
+    CONFIG.profile.hackerone && {
+      href: CONFIG.profile.hackerone,
+      label: "HackerOne",
+      icon: <SiHackerone />,
+    },
+    CONFIG.profile.bugcrowd && {
+      href: CONFIG.profile.bugcrowd,
+      label: "Bugcrowd",
+      icon: <SiBugcrowd />,
     },
   ].filter(Boolean) as Link[]
 

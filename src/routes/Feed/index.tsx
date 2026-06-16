@@ -8,6 +8,7 @@ import TagList from "./TagList"
 import MobileProfileCard from "./MobileProfileCard"
 import ProfileCard from "./ProfileCard"
 import ContactCard from "./ContactCard"
+import CVECard from "./CVECard"
 import PostList from "./PostList"
 import PinnedPosts from "./PostList/PinnedPosts"
 
@@ -26,6 +27,7 @@ const Feed: React.FC<Props> = () => {
           height: `calc(100vh - ${HEADER_HEIGHT}px)`,
         }}
       >
+        <CVECard />
         <TagList />
       </div>
       <div className="mid">
@@ -75,7 +77,7 @@ const StyledWrapper = styled.div`
     display: none;
     overflow: scroll;
     position: sticky;
-    grid-column: span 2 / span 2;
+    grid-column: span 3 / span 3;
     top: ${HEADER_HEIGHT - 10}px;
 
     scrollbar-width: none;
@@ -85,7 +87,8 @@ const StyledWrapper = styled.div`
     }
 
     @media (min-width: 1024px) {
-      display: block;
+      display: flex;
+      flex-direction: column;
     }
   }
 
@@ -93,7 +96,7 @@ const StyledWrapper = styled.div`
     grid-column: span 12 / span 12;
 
     @media (min-width: 1024px) {
-      grid-column: span 7 / span 7;
+      grid-column: span 6 / span 6;
     }
 
     > .tags {

@@ -12,11 +12,29 @@ const CONFIG = {
     instagram: "josan.george/",
     youtube: "https://www.youtube.com/@Wh4tTh3H4ck",
     medium: "https://medium.com/@josangeorge27",
-    hackthebox: "https://app.hackthebox.com/profile/798539",
+    hackthebox: "https://profile.hackthebox.com/profile/019d6882-4a23-71cd-ac5a-53e0834a8a8d?tab=badges",
     tryhackme: "https://tryhackme.com/r/p/MRxROBOT",
     discord: "https://discord.gg/6p3ZmHHZm9",
+    // Bug Bounty platforms – set URL to enable, leave empty to hide
+    hackerone: "https://hackerone.com/josan_george?type=user",
+    bugcrowd: "https://bugcrowd.com/h/Josan_George",
   },
   projects: [],
+  // CVE discoveries – add entries here to display in the sidebar CVE card
+  cves: [
+    {
+      id: "CVE-2026-54506",
+      description: "Stored XSS via sanitizeHTML() bypass in Vvveb CMS user profile bio field",
+      severity: "High",
+      url: "https://github.com/givanz/Vvveb/security/advisories/GHSA-5cg7-phhv-4qjr",
+    },
+    {
+      id: "CVE-2026-32994",
+      description: "Unauthorized cross-room message disclosure via missing access control in Rocket.Chat autotranslate endpoint",
+      severity: "Medium",
+      url: "https://nvd.nist.gov/vuln/detail/CVE-2026-32994",
+    },
+  ],
   // blog setting (required)
   blog: {
     title: "Josan George - Writeups",
