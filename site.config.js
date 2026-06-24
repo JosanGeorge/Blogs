@@ -34,6 +34,12 @@ const CONFIG = {
       severity: "Medium",
       url: "https://nvd.nist.gov/vuln/detail/CVE-2026-32994",
     },
+    {
+      id: "CVE-2026-56736",
+      description: "Stored XSS in Admin FAQ Editor via HTML Entity Bypass in Frontend FAQ Submission in phpMyFAQ",
+      severity: "High",
+      url: "https://github.com/thorsten/phpMyFAQ/security/advisories/GHSA-pgwp-vc7q-cvj3",
+    },
   ],
   // blog setting (required)
   blog: {
